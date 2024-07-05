@@ -12,8 +12,9 @@ export default function RootLayout() {
       },
       headerBackVisible: true
     }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="new" />
+      <Stack.Screen name="Home" />
+      <Stack.Screen name="New" />
+      <Stack.Screen name="New_Interest" options={{ title: "Nuevo interes" }} />
     </Stack>
   );
 }

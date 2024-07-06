@@ -7,6 +7,7 @@ import { Image, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native'
 interface ArticleCardProps {
 	style?: ViewStyle
 	article?: Article
+	onPress?: () => void
 }
 
 const styles = StyleSheet.create({
@@ -39,10 +40,10 @@ const styles = StyleSheet.create({
 
 export const ArticleCard: FC<ArticleCardProps> = (props) => {
 
-	const { style, article } = props
+	const { style, onPress, article } = props
 
 	return (
-		<TouchableOpacity style={[styles.mainBox, style]}>
+		<TouchableOpacity style={[styles.mainBox, style]} onPress={onPress}>
 			<Image source={{ uri: article?.image }} style={styles.image} />
 			<Heading variant='subTitle' tx={article?.title || ""} style={styles.title} />
 			<Paragraph tx={article?.description || ""} numberOfLines={2} style={styles.description} />

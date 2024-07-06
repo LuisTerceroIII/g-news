@@ -37,14 +37,14 @@ export default function Home() {
 	const onChangeText = (keyword: string) => {
 		dispatch(onChangeKeyword({keyword}))
 	}
-	
+
 	const search = () => navigation.navigate({ name: "results", params: { keyword: keywordFilter } })
 
 	return (
 		<Screen style={{ justifyContent: "center", flex: 1 }}>
 			<KeyboardAvoidingView behavior="padding">
 				<Heading tx="Tus News" variant="title" style={styles.heading} />
-				<Input value={keywordFilter} onChangeText={onChangeText} style={styles.searchNewsInput} />
+				<Input value={keywordFilter} onChangeText={onChangeText} style={styles.searchNewsInput} onSubmitEditing={search} />
 				<Button style={{ alignSelf: "center" }} tx="Buscar" onPress={search} />
 			</KeyboardAvoidingView>
 		</Screen>

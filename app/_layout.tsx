@@ -1,10 +1,10 @@
 import { Stack } from "expo-router";
 import { Provider } from 'react-redux'
-import store from "@/store/root-store"
+import rootStore from "@/store/root-store"
 
 export default function RootLayout() {
 	return (
-		<Provider store={store}>
+		<Provider store={rootStore}>
 			<Stack screenOptions={{
 				headerStyle: {
 					backgroundColor: '#ffff',
@@ -17,7 +17,8 @@ export default function RootLayout() {
 			}}>
 				<Stack.Screen name="home" options={{ headerShown: false }} />
 				<Stack.Screen name="results" options={{ title: "Resultados" }} />
-				<Stack.Screen name="new" options={{ title: "Noticia" }} />
+				<Stack.Screen name="article" options={{ title: "Noticia" }} />
+				<Stack.Screen name="webview" />
 			</Stack>
 		</Provider>
 	);

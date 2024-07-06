@@ -55,8 +55,6 @@ enum CountryCode {
 	UnitedStates = "us"
 }
 
-
-
 export interface GNewsParamsFilter {
 	lang?: LanguageCode
 	country?: CountryCode

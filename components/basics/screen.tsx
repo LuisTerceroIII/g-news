@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
 	scroll: {
 		width: "100%",
 		padding: "5%",
-
 	}
 })
 

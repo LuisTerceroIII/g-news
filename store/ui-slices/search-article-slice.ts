@@ -28,7 +28,8 @@ export const searchArticlesSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(searchByKeywordAsync.pending, (state, action) => {
+        builder
+        .addCase(searchByKeywordAsync.pending, (state, action) => {
             state.requestState = "pending"
             state.articlesResults = []
         })
@@ -41,6 +42,7 @@ export const searchArticlesSlice = createSlice({
         })
     }
 })
+
 export const searchByKeywordAsync = createAsyncThunk(
     "searchArticleSlice/searchByKeyword",
     async (keyword: string) => {

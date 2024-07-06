@@ -10,6 +10,7 @@ interface InputProps {
 	style?: ViewStyle
 	keyboardType?: KeyboardType
 	placeholderTx?: string
+	onSubmitEditing?: () => void
 }
 const styles = StyleSheet.create({
 	input: {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
 
 export const Input: FC<InputProps> = (props) => {
 	
-	const { ref, onChangeText, value, onBlur, onFocus, style } = props
+	const { ref, onChangeText, value, onBlur, onFocus, onSubmitEditing, style } = props
 
 	return (
 		<TextInput
@@ -33,6 +34,7 @@ export const Input: FC<InputProps> = (props) => {
 			onBlur={onBlur}
 			onFocus={onFocus}
 			style={[styles.input, style]}
+			onSubmitEditing={onSubmitEditing}
 		/>
 	)
 };

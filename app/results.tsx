@@ -1,5 +1,6 @@
 import { Heading } from "@/components/basics/heading";
 import { Screen } from "@/components/basics/screen";
+import { ArticleCard } from "@/components/screen/seach-flow/article-card";
 import { api } from "@/services/api/api";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useReducer } from "react";
@@ -25,12 +26,12 @@ const reducer = (state, action) => {
 
 }
 
-export default function NewScreen() {
+export default function ResultsScreen() {
+	
 	const { keyword } = useLocalSearchParams<{ keyword: string }>()
 	const [state, dispatch] = useReducer(reducer, { newsData: [], requestState: "idle" })
 
 	useEffect(() => {
-
 		const abortController = new AbortController()
 		const fetchData = async () => {
 			dispatch({ type: "loading" })
@@ -41,8 +42,8 @@ export default function NewScreen() {
 	}, [])
 
 	const newsResults = useMemo(() => {	
-		return state?.newsData?.data?.articles?.map((newData: any) => {
-			return <Heading tx={JSON.stringify(newData)} variant="subTitle" key={newData?.url} />
+		return state?.newsData?.data?.articles?.map((article: any) => {
+			return <ArticleCard article={article} key={article?.url} />
 		})
 	}, [state?.newsData?.length])
 
@@ -50,7 +51,7 @@ export default function NewScreen() {
 		<Screen>
 			<Heading tx={keyword || ""} variant="title" />
 			{state.requestState === "loading" ? <ActivityIndicator /> : (
-				<View>
+				<View style={{rowGap: 20, paddingTop: 20}}>
 					{newsResults}
 				</View>
 			)}

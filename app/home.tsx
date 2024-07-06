@@ -5,11 +5,12 @@ import { Screen } from "@/components/basics/screen";
 import { Interests } from "@/components/screens/home/interests/interests";
 import { Link, useNavigation } from "expo-router";
 import { useReducer } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
 	heading: {
-		color: "purple"
+		color: "purple",
+		alignSelf: "center"
 	},
 	searchNewsInput: {
 		marginVertical: 20
@@ -34,7 +35,7 @@ enum HomeActions {
 }
 interface Action {
 	type: HomeActions,
-	payload: any
+	payload?: any
 }
 function reducer(state: HomeStates, action: Action) {
 	if (action.type === 'onChangeKeywordFilter') {
@@ -55,15 +56,15 @@ export default function Home() {
 		dispatch({ type: HomeActions.onChangeKeywordFilter, payload: keyword })
 	}
 
-	const goToNews = () => navigation.navigate({name: "New",params: {keyword: state.keywordFilter}})
+	const search = () => navigation.navigate({ name: "results", params: { keyword: state.keywordFilter } })
 
 	return (
-		<Screen>
-			<Heading tx="Tus News" variant="title" style={styles.heading} />
-			<Input value={state.keywordFilter} onChangeText={onChangeKeyword} style={styles.searchNewsInput} />
-			<Button style={{ alignSelf: "center" }} tx="Buscar" onPress={goToNews}/>
-			<Heading tx="Tus intereses" variant="subTitle" style={styles.subtitle} />
-			<Interests />
+		<Screen style={{ justifyContent: "center", flex: 1 }}>
+			<KeyboardAvoidingView behavior="padding">
+				<Heading tx="Tus News" variant="title" style={styles.heading} />
+				<Input value={state.keywordFilter} onChangeText={onChangeKeyword} style={styles.searchNewsInput} />
+				<Button style={{ alignSelf: "center" }} tx="Buscar" onPress={search} />
+			</KeyboardAvoidingView>
 		</Screen>
 	);
 }

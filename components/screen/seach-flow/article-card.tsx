@@ -1,0 +1,51 @@
+import { Heading } from '@/components/basics/heading'
+import { Paragraph } from '@/components/basics/paragraph'
+import { Article } from '@/types/types'
+import React, { FC } from 'react'
+import { Image, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native'
+
+interface ArticleCardProps {
+	style?: ViewStyle
+	article?: Article
+}
+
+const styles = StyleSheet.create({
+	mainBox: {
+		borderRadius: 19,
+		backgroundColor: "white",
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,
+		elevation: 5,
+		padding: 16
+	},
+	image: {
+		width: "100%",
+		height: 150,
+		resizeMode: "cover",
+		borderRadius: 8
+	},
+	title: {
+		paddingTop: 10,
+	},
+	description: {
+		paddingTop: 5
+	}
+})
+
+export const ArticleCard: FC<ArticleCardProps> = (props) => {
+
+	const { style, article } = props
+
+	return (
+		<TouchableOpacity style={[styles.mainBox, style]}>
+			<Image source={{ uri: article?.image }} style={styles.image} />
+			<Heading variant='subTitle' tx={article?.title || ""} style={styles.title} />
+			<Paragraph tx={article?.description || ""} numberOfLines={2} style={styles.description} />
+		</TouchableOpacity>
+	)
+}

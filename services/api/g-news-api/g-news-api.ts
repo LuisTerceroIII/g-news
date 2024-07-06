@@ -13,7 +13,6 @@ export class GNewsAPI {
             const lang = filter?.lang != null ? `lang=${filter.lang}&` : "lang=en&"
             const country = filter?.country != null ? `country=${filter.country}&` : "country=us&"
             const max = filter?.max != null ? `max=${filter.max}&` : "max=10&"
-
             const config = {
                 method: "get",
                 url: `https://gnews.io/api/v4/search?${keyword}${lang}${country}${max}apikey=46cd676ca777b8166c14203e55d48e9f`,
@@ -22,7 +21,6 @@ export class GNewsAPI {
                     'Accept': 'application/json'
                 }
             }
-
             const response = await axios(config)
             return response
 

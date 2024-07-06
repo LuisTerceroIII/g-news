@@ -1,14 +1,12 @@
+import React from 'react'
+import { useNavigation } from "expo-router";
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSelector, useDispatch } from 'react-redux'
+import { getKeyword, onChangeKeyword } from "@/store/ui-slices/search-article-slice"
 import { Button } from "@/components/basics/button";
 import { Heading } from "@/components/basics/heading";
 import { Input } from "@/components/basics/input";
 import { Screen } from "@/components/basics/screen";
-import React, { useState } from 'react'
-import { Link, useNavigation } from "expo-router";
-import { useReducer } from "react";
-import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useSelector, useDispatch } from 'react-redux'
-import { getKeyword, onChangeKeyword } from "@/store/ui-slices/search-article-slice"
-
 
 const styles = StyleSheet.create({
 	heading: {
@@ -39,7 +37,7 @@ export default function Home() {
 	const onChangeText = (keyword: string) => {
 		dispatch(onChangeKeyword({keyword}))
 	}
-
+	
 	const search = () => navigation.navigate({ name: "results", params: { keyword: keywordFilter } })
 
 	return (

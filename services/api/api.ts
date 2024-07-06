@@ -4,6 +4,7 @@ class API {
     gNewsApi: GNewsAPI;
 
     constructor() {
+        console.log("CREANOD LA APIII!")
         this.gNewsApi = new GNewsAPI()
     }
 }

@@ -1,11 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import searchArticleSliceReducer from '@/store/ui-slices/search-article-slice'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux';
+import searchArticleSliceReducer from '@/store/ui-slices/search-article-slice'
+import UserSliceReducer from './user-slice/user-slice';
+
+const rootReducer = combineReducers({
+	searchArticleSlice: searchArticleSliceReducer,
+	userSlice: UserSliceReducer
+})
 
 export const rootStore = configureStore({
-	reducer: {
-		searchArticleSlice: searchArticleSliceReducer
-	},
+	reducer: rootReducer,
 	middleware: (getDefaultMiddleware) => (
 		getDefaultMiddleware({
 			serializableCheck: false

@@ -8,7 +8,6 @@ interface ScreenProps {
 
 const styles = StyleSheet.create({
 	screen : {
-		flexBasis: "100%",
 		flexGrow: 1
 	},
 	scroll: {

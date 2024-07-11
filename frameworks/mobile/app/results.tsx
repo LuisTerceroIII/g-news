@@ -33,9 +33,9 @@ export default function ResultsScreen() {
 
 	return (
 		<Screen>
-			<Heading tx={keyword || ""} variant="title" />
+			<Heading tx={keyword || ""} variant="title" style={{paddingHorizontal: "5%"}}/>
 			{requestState === "pending" ? <ActivityIndicator /> : (
-				<View style={{rowGap: 20, paddingTop: 20}}>
+				<View style={{rowGap: 20, paddingTop: 20, paddingHorizontal: "5%"}}>
 					{newsResults}
 				</View>
 			)}

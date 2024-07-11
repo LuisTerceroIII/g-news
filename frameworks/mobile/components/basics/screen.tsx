@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, ViewStyle } from 'react-native'
 
 interface ScreenProps {
 	style?: ViewStyle
+	scrollStyle?: ViewStyle
 	children?: React.ReactNode
 }
 
@@ -12,17 +13,17 @@ const styles = StyleSheet.create({
 	},
 	scroll: {
 		width: "100%",
-		padding: "5%",
+		paddingVertical: "5%"
 	}
 })
 
 export const Screen: FC<ScreenProps> = (props) => {
 	
-	const { style, children } = props
+	const { style, scrollStyle, children } = props
 
 	return (
 		<SafeAreaView style={[styles.screen, style]}>
-			<ScrollView contentContainerStyle={[styles.scroll, style]}>
+			<ScrollView contentContainerStyle={[styles.scroll, style]} nestedScrollEnabled>
 				{children}
 			</ScrollView>
 		</SafeAreaView>

@@ -14,7 +14,9 @@ const styles = StyleSheet.create({
 		alignSelf: "center"
 	},
 	searchNewsInput: {
-		marginVertical: 20
+		marginVertical: 20,
+		width:  "95%",
+		alignSelf: "center"
 	},
 	subtitle: {
 		color: "purple",

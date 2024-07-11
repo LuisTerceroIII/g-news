@@ -15,7 +15,7 @@ export default function RootLayout() {
 				},
 				headerBackVisible: true
 			}}>
-				<Stack.Screen name="home" options={{ headerShown: false }} />
+				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 				<Stack.Screen name="results" options={{ title: "Resultados" }} />
 				<Stack.Screen name="article" options={{ title: "Noticia" }} />
 				<Stack.Screen name="webview" />

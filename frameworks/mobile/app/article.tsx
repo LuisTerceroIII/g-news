@@ -1,15 +1,19 @@
 import { Screen } from "@/components/basics/screen";
 import { Image, Linking, StyleSheet, Text, View } from "react-native";
 import { getActionArticle } from "@/store/ui-slices/search-article-slice"
-import { useSelector } from "react-redux";
-import { Article } from "@/types/types";
+import { saveArticle } from "@/store/user-slice/user-slice"
+
+import { useDispatch, useSelector } from "react-redux";
 import { Heading } from "@/components/basics/heading";
 import { Paragraph } from "@/components/basics/paragraph";
 import { Link } from "expo-router";
+import { Button } from "@/components/basics/button";
+import { Article } from "@/model/articles/article";
 
 const styles = StyleSheet.create({
 	screen: {
-		padding: 0
+		padding: 0,
+		flexGrow: 1
 	},
 	image: {
 		width: "100%",
@@ -28,6 +32,11 @@ const styles = StyleSheet.create({
 export default function ArticleScreen() {
 
 	const actionArticle: Article = useSelector(getActionArticle)
+	const dispatch = useDispatch()
+
+	const handleSaveArticle = () => {
+		dispatch(saveArticle({article: actionArticle}))
+	}
 	
 	return (
 		<Screen style={styles.screen}>
@@ -37,6 +46,11 @@ export default function ArticleScreen() {
 				<Paragraph tx={actionArticle?.publishedAt} style={styles.contentTx} />
 				<Paragraph tx={actionArticle?.content} style={styles.contentTx} />
 				<Link href={"webview"}>Abrir</Link>
+
+				<Button
+					tx="Save"
+					onPress={handleSaveArticle} 
+				/>
 			</View>
 		</Screen>
 	);

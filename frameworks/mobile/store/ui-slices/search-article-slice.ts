@@ -1,17 +1,18 @@
 import { api } from '@/services/api/api'
-import { Article } from '@/types/types'
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { RootStore } from '../root-store'
+import { Article } from '@/model/articles/article'
 
 interface SearchState {
     keyword: string
-    actionArticle: Article | null
+    actionArticle: Article
     requestState: 'idle' | 'pending' | 'succeeded' | 'failed'
     articlesResults: Article[]
 }
 
 const initialState: SearchState = {
     keyword: "",
-    actionArticle: null,
+    actionArticle: new Article(),
     requestState: "idle",
     articlesResults: []
 }
@@ -52,10 +53,10 @@ export const searchByKeywordAsync = createAsyncThunk(
 )
 
 export const { onChangeKeyword, setActionArticle } = searchArticlesSlice.actions
-export const getKeyword = (state: any) => state.searchArticleSlice?.keyword
-export const getActionArticle = (state: any) => state.searchArticleSlice?.actionArticle
-export const getResultArticles = (state: any) => state.searchArticleSlice?.articlesResults
-export const getRequestState = (state: any) => state.searchArticleSlice?.requestState
+export const getKeyword = (state: RootStore) => state.searchArticleSlice?.keyword
+export const getActionArticle = (state: RootStore) => state.searchArticleSlice?.actionArticle
+export const getResultArticles = (state: RootStore) => state.searchArticleSlice?.articlesResults
+export const getRequestState = (state: RootStore) => state.searchArticleSlice?.requestState
 
 
 export default searchArticlesSlice.reducer

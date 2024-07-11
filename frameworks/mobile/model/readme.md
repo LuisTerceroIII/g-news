@@ -1,0 +1,2 @@
+Este directorio contendra las entidades y la logica de negocio necesaria, eso excluye a llamadas a servicios que se hara desde "Service" que sera el repositorio global
+para conecciones a servicios externos
